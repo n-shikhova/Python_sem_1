@@ -1,7 +1,6 @@
 # Шиховой Натальи
 
 # Задание 1
-from pip._vendor.pyparsing import basestring
 
 print("Задание 1")
 arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -96,21 +95,18 @@ if __name__ == '__main__':
 
 # Задание 8
 print("\n Задание 8")
-from collections import Iterable
 
+arr = [7, 6, 5, 4, 3, [2, 4], [[10, 5], 8],[23,"hi"]]
 
-def flatten(list):
-    for item in list:
-        if isinstance(item, Iterable) and not isinstance(item, basestring):
-            for x in flatten(item):
-                yield x
+def list_open(arr, l=[]):
+    for i in arr:
+        if type(i) == list:
+            list_open(i)
         else:
-            yield item
+            l.append(i)
 
-
-a = [1, [2, 2, [2]], 4]
-
-print(list(flatten(a)))
+    return l
+print(list_open(arr))
 
 
 # Задание 9
@@ -128,19 +124,8 @@ if key:
     print(key)
 
 
-
-
-
-
-
-
-
-
-
 #10
 print("\n Задание 10")
-
-
 
 arr = [1, 2, 3, 1, 3]
 arr_2 = [i for i in arr if arr.count(i) > 1]
